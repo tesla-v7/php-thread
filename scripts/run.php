@@ -32,7 +32,7 @@ $p = new Pool(4);
 array_walk(
     array_fill(1, 10, 0),
     function ($item, $key)use($p){$p->submit(new job($key));}
-    );
+);
 
 //$tasks = [
 //    new job('0'),
