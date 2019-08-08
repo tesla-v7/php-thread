@@ -1,0 +1,11 @@
+version: "3"
+services:
+  php-pt:
+    build: .
+    image: php-pt
+    volumes:
+      - ./scripts:/home/app/scripts
+#    command: ["ls"]
+#    command: ["/home/app/scripts/create-file.php"]
+    command: ["/home/app/scripts/run.php"]
+#    command: ["php", "/home/app/scripts/run.php"]
