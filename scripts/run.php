@@ -1,5 +1,9 @@
 <?php
 
+$chromeRun = '/usr/bin/google-chrome-stable --remote-debugging-address=192.168.43.249 --remote-debugging-port=9222';
+$chromWs = 'ws://127.0.0.1:9222/devtools/browser/5385c568-5bf1-4d4e-b554-b1d30b0ebf7c';
+$tun = 'socat tcp-l:9223,fork,reuseaddr tcp:127.0.0.1:9222';
+
 class job extends Threaded implements Collectable {
     private $url = 'http://diesel.elcat.kg/index.php?showforum=283&prune_day=100&sort_by=Z-A&sort_key=last_post&topicfilter=all&page=';
     public $val;
