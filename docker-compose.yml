@@ -4,7 +4,7 @@ services:
     build: .
     image: php-pt
     volumes:
-      - ./scripts:/home/app/scripts
+      - ./app:/home/app/scripts
 #    command: ["ls"]
 #    command: ["/home/app/scripts/create-file.php"]
     command: ["/home/app/scripts/run.php"]
