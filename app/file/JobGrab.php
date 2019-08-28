@@ -1,19 +1,28 @@
 <?php
 
+include_once './Parse.php';
+
 class JobGrab extends Threaded implements Collectable {
     public $url;
     public $body;
+    private $result;
     private $garbage = false;
-    public function __construct($url){
+    private $graber = null;
+    public function __construct($url, Parser $graber){
         $this->url = $url;
+        $this->graber = $graber;
     }
     public function run(){
-        $this->body = file_get_contents($this->url, null, null);
+        $this->result = $this->graber->getResult(file_get_contents($this->url, null, null));
+        $next = $this->graber->getNextUrl();
+        if($next){
+
+        };
 //        $this->body = $this->url;
         $this->setGarbage();
     }
     public function getResult(){
-        return $this->body;
+        return $this->result;
     }
     public function setGarbage()
     {
