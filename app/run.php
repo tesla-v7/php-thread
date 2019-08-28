@@ -1,6 +1,7 @@
 <?php
 
 include_once __DIR__.'/file/JobGrab.php';
+include_once __DIR__.'/file/Parse.php.php';
 //include_once __DIR__ .'/file/JobSaveResult.php';
 
 const POOL_SIZE = 4;
@@ -17,7 +18,7 @@ function main(){
         echo "chunk $key\n";
         $chunkResult = [];
         foreach($urlsChunk as $keyCunk=>$url){
-            $poolThread->submit(new JobGrab($url));
+            $poolThread->submit(new JobGrab($url, new Parser()));
         };
         while($poolThread->collect(function($checkingTask)use(&$chunkResult){
             if($checkingTask->getName() === 'grab'){
